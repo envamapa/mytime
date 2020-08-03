@@ -15,8 +15,8 @@ android {
 
     defaultConfig {
         applicationId "com.enya.mitiempo"
-        build_versions.min_sdk
-        build_versions.build_versions
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.build_versions
         versionCode 1
         versionName "1.0"
 
@@ -28,7 +28,7 @@ android {
             variant ->
                 variant.buildConfigField STRING, WEATHER_API, getCustomProperty(WEATHER_API)
         }
-        debugTest {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.defaultKey
@@ -54,6 +54,7 @@ dependencies {
     implementation deps.android.lifecycle
     implementation deps.android.card_view
     implementation deps.anko.commons
+    implementation deps.pretty_logs
     testImplementation deps.test.junit_test
     androidTestImplementation deps.test.junit
     androidTestImplementation deps.test.espresso

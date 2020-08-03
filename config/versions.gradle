@@ -14,6 +14,7 @@ versions.core = "1.3.1"
 versions.appcompat_version = "1.1.0"
 versions.constraintlayout = "1.1.3"
 versions.lifecycle = "2.2.0"
+versions.pretty_logs = "2.2.0"
 
 def deps = [:]
 
@@ -51,5 +52,6 @@ android.card_view = "com.android.support:cardview-v7:$versions.support"
 deps.android = android
 
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.pretty_logs = "com.orhanobut:logger:$versions.pretty_logs"
 
 ext.deps = deps
