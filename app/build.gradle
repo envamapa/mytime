@@ -53,6 +53,7 @@ dependencies {
     implementation deps.android.constraintlayout
     implementation deps.android.lifecycle
     implementation deps.android.card_view
+    implementation deps.anko.commons
     testImplementation deps.test.junit_test
     androidTestImplementation deps.test.junit
     androidTestImplementation deps.test.espresso
