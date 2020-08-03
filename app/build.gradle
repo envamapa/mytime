@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: '../config/functions.gradle'
+apply from: '../config/versions.gradle'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    signingConfigs {
+        defaultKey
+    }
+    generateSignature()
+
+    defaultConfig {
+        applicationId "com.enya.mitiempo"
+        build_versions.min_sdk
+        build_versions.build_versions
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        applicationVariants.all {
+            variant ->
+                variant.buildConfigField STRING, WEATHER_API, getCustomProperty(WEATHER_API)
+        }
+        debugTest {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.defaultKey
+            buildConfigField BOOLEAN, DEBUG_MODE, TRUE
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.defaultKey
+            buildConfigField BOOLEAN, DEBUG_MODE, FALSE
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation deps.kotlin.stdlib
+    implementation deps.support.core
+    implementation deps.support.appcompat
+    implementation deps.android.material
+    implementation deps.android.annotation
+    implementation deps.android.constraintlayout
+    implementation deps.android.lifecycle
+    implementation deps.android.card_view
+    testImplementation deps.test.junit_test
+    androidTestImplementation deps.test.junit
+    androidTestImplementation deps.test.espresso
+}

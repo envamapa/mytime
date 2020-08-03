@@ -1,0 +1,55 @@
+ext.depts = [:]
+def versions = [:]
+versions.kotlin = "1.3.72"
+versions.android_gradle_plugin = "4.0.1"
+versions.anko_version = "0.10.5"
+versions.espresso = "3.2.0"
+versions.junit = "1.1.1"
+versions.junit_test = "4.13"
+versions.pretty_logs = "2.2.0"
+versions.runner_test = "1.0.2"
+versions.support = "27.1.1"
+versions.card_view = "27.1.1"
+versions.core = "1.3.1"
+versions.appcompat_version = "1.1.0"
+versions.constraintlayout = "1.1.3"
+versions.lifecycle = "2.2.0"
+
+def deps = [:]
+
+def support = [:]
+support.appcompat = "androidx.appcompat:appcompat:$versions.appcompat_version"
+support.core = "androidx.core:core-ktx:$versions.core"
+deps.support = support
+
+def build_versions = [:]
+build_versions.min_sdk = 16
+build_versions.target_sdk = 29
+ext.build_versions = build_versions
+
+def kotlin = [:]
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+deps.kotlin = kotlin
+
+def test = [:]
+test.junit_test = "junit:junit:$versions.junit_test"
+test.junit = "androidx.test.ext:junit:$versions.junit"
+test.espresso = "androidx.test.espresso:espresso-core:$versions.espresso"
+deps.test = test
+
+def anko = [:]
+anko.commons = "org.jetbrains.anko:anko-commons:$versions.anko_version"
+deps.anko = anko
+
+def android = [:]
+android.material = "com.google.android.material:material:$versions.appcompat_version"
+android.annotation = "androidx.annotation:annotation:$versions.appcompat_version"
+android.constraintlayout = "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+android.lifecycle = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+android.card_view = "com.android.support:cardview-v7:$versions.support"
+deps.android = android
+
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+
+ext.deps = deps
